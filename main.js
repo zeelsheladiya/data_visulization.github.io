@@ -9,6 +9,14 @@ import {FontLoader} from 'three/examples/jsm/loaders/FontLoader';
 import {TextGeometry} from 'three/examples/jsm/geometries/TextGeometry';
 import { TTFLoader } from 'three/examples/jsm/loaders/TTFLoader';
 
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass';
+
+import { LuminosityShader } from 'three/addons/shaders/LuminosityShader';
+import { SobelOperatorShader } from 'three/addons/shaders/SobelOperatorShader';
+
+let effectSobel, composer;
 
 //scene
 
@@ -30,8 +38,33 @@ renderer.render(scene, camera);
 
 //objects
 
-const geometry = new THREE.TorusGeometry(15, 1, 16, 100);
-const material = new THREE.MeshStandardMaterial({color: 0xFF6347});
+composer = new EffectComposer( renderer );
+const renderPass = new RenderPass( scene, camera );
+composer.addPass( renderPass );
+
+// postprocessing
+
+composer = new EffectComposer( renderer );
+composer.addPass( renderPass );
+
+// color to grayscale conversion
+
+const effectGrayScale = new ShaderPass( LuminosityShader );
+composer.addPass( effectGrayScale );
+
+// you might want to use a gaussian blur filter before
+// the next pass to improve the result of the Sobel operator
+
+// Sobel operator
+
+effectSobel = new ShaderPass( SobelOperatorShader );
+effectSobel.uniforms[ 'resolution' ].value.x = window.innerWidth * window.devicePixelRatio;
+effectSobel.uniforms[ 'resolution' ].value.y = window.innerHeight * window.devicePixelRatio;
+composer.addPass( effectSobel );
+
+//const geometry = new THREE.TorusGeometry(15, 1, 16, 100);
+const geometry = new THREE.TorusKnotGeometry(80, 5, 300, 20, 2, 3);
+const material = new THREE.MeshStandardMaterial({color: 0x049ef4});
 const torus = new THREE.Mesh(geometry, material);
 
 scene.add(torus);
@@ -109,36 +142,80 @@ ttfLoader.load('font/Roboto-Bold.ttf', (json) => {
         font: jetBrainsFont,
     });
 
-    const textMaterial = new THREE.MeshNormalMaterial();
+    const sidharthtextGeometry = new TextGeometry('Sidhant', {
+        height: 1,
+        size: 0.5,
+        font: jetBrainsFont,
+    });
+
+    const meenakshitextGeometry = new TextGeometry('Meenakshi', {
+        height: 1,
+        size: 0.5,
+        font: jetBrainsFont,
+    });
+
+    const mahommadtextGeometry = new TextGeometry('Muhammad', {
+        height: 1,
+        size: 0.5,
+        font: jetBrainsFont,
+    });
+
+//    const textMaterial = new THREE.MeshNormalMaterial();
+
+    const textMaterial = [
+        new THREE.MeshPhongMaterial({ color: 0xff6600 }), // front
+        new THREE.MeshPhongMaterial({ color: 0x000000 }) // side
+    ];
 
     const zeeltextMesh = new THREE.Mesh(zeeltextGeometry, textMaterial);
     const anibaltextMesh = new THREE.Mesh(anibaltextGeometry, textMaterial);
     const aashishtextMesh = new THREE.Mesh(aashishtextGeometry, textMaterial);
     const tonytextMesh = new THREE.Mesh(tonytextGeometry, textMaterial);
+    const sidharthtextMesh = new THREE.Mesh(sidharthtextGeometry, textMaterial);
+    const meenakshitextMesh = new THREE.Mesh(meenakshitextGeometry, textMaterial);
+    const mahommadtextMesh = new THREE.Mesh(mahommadtextGeometry, textMaterial);
 
     zeeltextMesh.position.x = textPositionX;
-    zeeltextMesh.position.y = textPositionY;
+    zeeltextMesh.position.y = textPositionY + 4;
     zeeltextMesh.position.z = textPositionZ;
 
     anibaltextMesh.position.x = textPositionX - 4;
-    anibaltextMesh.position.y = textPositionY;
+    anibaltextMesh.position.y = textPositionY + 4;
     anibaltextMesh.position.z = textPositionZ + 2;
     anibaltextMesh.rotation.y = 0.2;
 
     aashishtextMesh.position.x = textPositionX -8;
-    aashishtextMesh.position.y = textPositionY;
+    aashishtextMesh.position.y = textPositionY + 4;
     aashishtextMesh.position.z = textPositionZ + 4;
     aashishtextMesh.rotation.y = 0.4;
 
     tonytextMesh.position.x = textPositionX - 12;
-    tonytextMesh.position.y = textPositionY;
+    tonytextMesh.position.y = textPositionY + 4;
     tonytextMesh.position.z = textPositionZ + 6;
     tonytextMesh.rotation.y = 0.6;
+
+    sidharthtextMesh.position.x = textPositionX - 16;
+    sidharthtextMesh.position.y = textPositionY + 4;
+    sidharthtextMesh.position.z = textPositionZ + 8;
+    sidharthtextMesh.rotation.y = 0.8;
+
+    meenakshitextMesh.position.x = textPositionX - 22;
+    meenakshitextMesh.position.y = textPositionY + 4;
+    meenakshitextMesh.position.z = textPositionZ + 10;
+    meenakshitextMesh.rotation.y = 1;
+
+    mahommadtextMesh.position.x = textPositionX - 28;
+    mahommadtextMesh.position.y = textPositionY + 4;
+    mahommadtextMesh.position.z = textPositionZ + 12;
+    mahommadtextMesh.rotation.y = 1.2;
 
     scene.add(zeeltextMesh);
     scene.add(anibaltextMesh);
     scene.add(aashishtextMesh);
     scene.add(tonytextMesh);
+    scene.add(sidharthtextMesh);
+    scene.add(meenakshitextMesh);
+    scene.add(mahommadtextMesh);
 });
 
 //avatars
@@ -149,13 +226,16 @@ const zeelTexture = new THREE.TextureLoader().load('images/zeel.jpg');
 const anibalTexture = new THREE.TextureLoader().load('images/zeel.jpg');
 const aashishTexture = new THREE.TextureLoader().load('images/zeel.jpg');
 const tonyTexture = new THREE.TextureLoader().load('images/zeel.jpg');
+const sidharthTexture = new THREE.TextureLoader().load('images/zeel.jpg');
+const meenakshiTexture = new THREE.TextureLoader().load('images/zeel.jpg');
+const mahommadTexture = new THREE.TextureLoader().load('images/zeel.jpg');
 
 //const doge = new THREE.Mesh(
 //        new THREE.BoxGeometry(3, 3, 3),
 //        new THREE.MeshBasicMaterial({map: dogeTexture})
 //        );
 
-var sizeOfAvtarBox = 2;
+var sizeOfAvtarBox = 2.5;
 
 const zeel = new THREE.Mesh(
         new THREE.BoxGeometry(sizeOfAvtarBox, sizeOfAvtarBox, sizeOfAvtarBox),
@@ -177,6 +257,21 @@ const tony = new THREE.Mesh(
         new THREE.MeshBasicMaterial({map: tonyTexture})
         );
 
+const sidharth = new THREE.Mesh(
+        new THREE.BoxGeometry(sizeOfAvtarBox, sizeOfAvtarBox, sizeOfAvtarBox),
+        new THREE.MeshBasicMaterial({map: sidharthTexture})
+        );
+
+const meenakshi = new THREE.Mesh(
+        new THREE.BoxGeometry(sizeOfAvtarBox, sizeOfAvtarBox, sizeOfAvtarBox),
+        new THREE.MeshBasicMaterial({map: meenakshiTexture})
+        );
+
+const mahommad = new THREE.Mesh(
+        new THREE.BoxGeometry(sizeOfAvtarBox, sizeOfAvtarBox, sizeOfAvtarBox),
+        new THREE.MeshBasicMaterial({map: mahommadTexture})
+        );
+
 //doge.position.set(0, 3, 3);
 
 
@@ -184,6 +279,9 @@ scene.add(zeel);
 scene.add(anibal);
 scene.add(aashish);
 scene.add(tony);
+scene.add(sidharth);
+scene.add(meenakshi);
+scene.add(mahommad);
 
 //moon
 
@@ -219,27 +317,50 @@ aashish.position.x = positionyPoint - 8;
 tony.position.z = positionXPoint + 6;
 tony.position.x = positionyPoint - 12;
 
+sidharth.position.z = positionXPoint + 8;
+sidharth.position.x = positionyPoint - 16;
+
+meenakshi.position.z = positionXPoint + 10;
+meenakshi.position.x = positionyPoint - 20;
+
+mahommad.position.z = positionXPoint + 12;
+mahommad.position.x = positionyPoint - 24;
+
+var rotationSpeed = 0.01;
+
 function moveCamera() {
     const t = document.body.getBoundingClientRect().top;
     moon.rotation.x += 0.005;
-    moon.rotation.y += 0.0025;
+    moon.rotation.y += 0.009;
     moon.rotation.z += 0.005;
 
 //    zeel
-    zeel.rotation.y += 0.01;
-    zeel.rotation.z += 0.01;
+    zeel.rotation.y += rotationSpeed;
+    zeel.rotation.z += rotationSpeed;
 
 //    anibal
-    anibal.rotation.y += 0.02;
-    anibal.rotation.z += 0.02;
+    anibal.rotation.y += rotationSpeed + 0.02;
+    anibal.rotation.z += rotationSpeed + 0.02;
 
 //    aashish
-    aashish.rotation.y += 0.03;
-    aashish.rotation.z += 0.03;
+    aashish.rotation.y += rotationSpeed + 0.03;
+    aashish.rotation.z += rotationSpeed + 0.03;
 
 //    tony
-    tony.rotation.y += 0.04;
-    tony.rotation.z += 0.04;
+    tony.rotation.y += rotationSpeed + 0.04;
+    tony.rotation.z += rotationSpeed + 0.04;
+
+    //    sidharth
+    sidharth.rotation.y += rotationSpeed + 0.05;
+    sidharth.rotation.z += rotationSpeed + 0.05;
+
+    //    meenakshi
+    meenakshi.rotation.y += rotationSpeed + 0.06;
+    meenakshi.rotation.z += rotationSpeed + 0.06;
+
+    //    mahommad
+    mahommad.rotation.y += rotationSpeed + 0.07;
+    mahommad.rotation.z += rotationSpeed + 0.07;
 
     camera.position.z = t * -0.01;
     camera.position.x = t * -0.0002;
@@ -261,6 +382,15 @@ function animate(){
 //    controls.update();
 
     renderer.render(scene, camera);
+
+//    composer.render();
+
 }
 
 animate();
+
+
+
+
+//===============================================================================
+//===============================================================================
