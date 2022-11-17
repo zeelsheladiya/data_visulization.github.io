@@ -99,7 +99,7 @@ function addStar() {
 
 }
 
-Array(200).fill().forEach(addStar);
+Array(300).fill().forEach(addStar);
 
 //adding background to scene
 
@@ -224,11 +224,11 @@ ttfLoader.load('font/Roboto-Bold.ttf', (json) => {
 const zeelTexture = new THREE.TextureLoader().load('images/zeel.jpg');
 
 const anibalTexture = new THREE.TextureLoader().load('images/zeel.jpg');
-const aashishTexture = new THREE.TextureLoader().load('images/zeel.jpg');
+const aashishTexture = new THREE.TextureLoader().load('images/aashish.jpeg');
 const tonyTexture = new THREE.TextureLoader().load('images/zeel.jpg');
-const sidharthTexture = new THREE.TextureLoader().load('images/zeel.jpg');
-const meenakshiTexture = new THREE.TextureLoader().load('images/zeel.jpg');
-const mahommadTexture = new THREE.TextureLoader().load('images/zeel.jpg');
+const sidharthTexture = new THREE.TextureLoader().load('images/sishant.jpeg');
+const meenakshiTexture = new THREE.TextureLoader().load('images/meenakshi.jpeg');
+const mahommadTexture = new THREE.TextureLoader().load('images/mahommad.jpeg');
 
 //const doge = new THREE.Mesh(
 //        new THREE.BoxGeometry(3, 3, 3),
@@ -286,21 +286,34 @@ scene.add(mahommad);
 //moon
 
 const moonTexture = new THREE.TextureLoader().load('images/moon.jpg');
-const normalTexture = new THREE.TextureLoader().load('images/moon_normal.jpg');
+const moonNormalTexture = new THREE.TextureLoader().load('images/moon_normal.jpg');
 
 const moon = new THREE.Mesh(
         new THREE.SphereGeometry(3, 32, 32),
-        new THREE.MeshStandardMaterial({map: moonTexture, normalMap: normalTexture})
+        new THREE.MeshStandardMaterial({map: moonTexture, normalMap: moonNormalTexture})
 );
+
+
+const earthTexture = new THREE.TextureLoader().load('images/earth.jpg');
+const earthNormalTexture = new THREE.TextureLoader().load('images/earth_normal.jpg');
+
+const earth = new THREE.Mesh(
+        new THREE.SphereGeometry(3, 32, 32),
+        new THREE.MeshStandardMaterial({map: earthTexture, normalMap: earthNormalTexture})
+        );
 
 
 
 scene.add(moon);
+scene.add(earth);
 
 //camera scroll animation
 
 moon.position.z = 30;
 moon.position.setX(-10);
+
+earth.position.z = 30;
+earth.position.setX(0);
 
 var positionXPoint = -5;
 var positionyPoint = 2;
@@ -333,6 +346,10 @@ function moveCamera() {
     moon.rotation.x += 0.005;
     moon.rotation.y += 0.009;
     moon.rotation.z += 0.005;
+
+    earth.rotation.x += 0.005;
+    earth.rotation.y += 0.009;
+    earth.rotation.z += 0.005;
 
 //    zeel
     zeel.rotation.y += rotationSpeed;

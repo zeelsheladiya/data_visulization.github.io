@@ -1,6 +1,12 @@
 @import url("https://use.typekit.net/jmk3xov.css");
 
-canvas {
+
+
+/*============================================================================*/
+/*==============================================================================*/
+
+
+canvas.bg {
   position: fixed;
   top: 0;
   left: 0;
@@ -36,46 +42,57 @@ h1, h2, h3, blockquote {
   font-style: normal;
 }
 
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-}
 
-
-
-  header {
+header {
     background: var(--dark-bg);
     grid-column: 2 / span 5;
     font-size: 2.5rem;
     padding: 2rem;
     margin-bottom: var(--spacing);
-  }
+}
 
-  section {
+section {
     grid-column: 2 / 8;
     padding: 1rem;
     background: var(--dark-bg);
     font-size: 1.25rem;
     line-height: 1.5;
     margin-bottom: var(--spacing);
-  }
+}
 
-  blockquote {
+section.yoyo {
+    grid-column: 2 / 8;
+    padding: 1rem;
+    background: white;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    margin-bottom: var(--spacing);
+}
+
+section.popo {
+    grid-column: 2 / 8;
+    padding: 1rem;
+    background: white;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    margin-bottom: var(--spacing);
+}
+
+blockquote {
     margin: 0;
     padding: 0;
     grid-column: 2 / span 9;
     margin-bottom: var(--spacing);
-  }
+}
 
-  blockquote p {
+blockquote p {
     color: black;
     background-color: white;
     font-size: 4rem;
     display: inline;
     line-height: 1;
-  }
+}
 
-  .left {
+.left {
     grid-column: 6 / 12;
 }

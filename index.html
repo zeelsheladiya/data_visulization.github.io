@@ -8,7 +8,7 @@
   </head>
   <body>
 
-    <canvas id="bg"></canvas>
+    <canvas class="bg" id="bg"></canvas>
 
     <main>
 
@@ -19,7 +19,7 @@
 
 
         <blockquote>
-            <p>I like making stuff and putting it on the internet</p>
+        <p>First Story :-  Average Milk consumption per age group</p>
         </blockquote>
 
         <section class="left">
@@ -38,23 +38,84 @@
 
         </section>
 
-        <section class="light">
-            <h2>👩🏽‍🚀 Projects</h2>
+    <section class="popo">
 
-            <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+            <canvas id="myChart"></canvas>
 
-            <h2>🏆 Accomplishments</h2>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-            <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+        <script>
+            const ctx = document.getElementById('myChart');
 
-        </section>
+            const dataO = {
+                labels: [
+                    '0-2',
+                    '2-10',
+                    '10-15',
+                    '15-30',
+                    '30-50',
+                    '50-70'
+                ],
+                datasets: [{
+                    label: '  Average Milk consumption ',
+                    data: [50, 40, 35, 25, 10, 30],
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(75, 192, 192)',
+                        'rgb(255, 205, 86)',
+                        'rgb(201, 203, 207)',
+                        'rgb(54, 162, 235)',
+                        'rgb(173, 216, 230)'
+                    ]
+                }],
+                color: 'white'
+            };
+
+        new Chart(ctx, {
+            type: 'polarArea',
+            data: dataO,
+            options: {
+                responsive: true,
+                scales: {
+                    r: {
+                        pointLabels: {
+                            display: true,
+                            centerPointLabels: true,
+                            font: {
+                                size: 18,
+                                color: "white"
+                            },
+                            color: "white"
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        color: 'white'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Average Milk consumption per age group',
+                        color: 'white'
+                    }
+                },
+                elements: {
+                    arc: {
+                        backgroundColor: "white",
+                        color: 'white'
+                    }
+                }
+            },
+            color: "white"
+        });
+
+        </script>
+
+    </section>
 
         <blockquote>
-            <p>The best way out is always through <br>-Robert Frost</p>
+        <p>Second Story: Average Fish consumption per month in Canada</p>
         </blockquote>
 
         <section class="left">
@@ -75,8 +136,50 @@
 
         </section>
 
+    <section class="light yoyo">
+
+    <canvas id="myChart2"></canvas>
+
+    <script>
+    const ctx2 = document.getElementById('myChart2');
+
+    const dataP = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        datasets: [{
+            label: '  Average Fish consumption ',
+            data: [0.5, 0.75, 1, 1.25, 0.75, 0.5, 0.25],
+            backgroundColor: [
+                'black',
+                'black',
+                'black',
+                'black',
+                'black',
+                'black',
+                'black'
+            ]
+        }]
+    };
+
+    new Chart(ctx2, {
+        type: 'line',
+        data: dataP,
+        options: {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+          text: (ctx2) => 'Average Fish consumption per month in Canada',
+      }
+    }
+        }
+    });
+
+    </script>
+
+    </section>
+
         <blockquote>
-            <p>Thanks for watching!</p>
+            <p>The End!</p>
         </blockquote>
 
 
