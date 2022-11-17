@@ -2,19 +2,19 @@
 
 import './style.css'
 
-import * as THREE from 'three';
+import * as THREE from './three';
 
-import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
-import {FontLoader} from 'three/examples/jsm/loaders/FontLoader';
-import {TextGeometry} from 'three/examples/jsm/geometries/TextGeometry';
-import { TTFLoader } from 'three/examples/jsm/loaders/TTFLoader';
+import {OrbitControls} from './three/examples/jsm/controls/OrbitControls';
+import {FontLoader} from './three/examples/jsm/loaders/FontLoader';
+import {TextGeometry} from './three/examples/jsm/geometries/TextGeometry';
+import { TTFLoader } from './three/examples/jsm/loaders/TTFLoader';
 
-import { EffectComposer } from 'three/addons/postprocessing/EffectComposer';
-import { RenderPass } from 'three/addons/postprocessing/RenderPass';
-import { ShaderPass } from 'three/addons/postprocessing/ShaderPass';
+import { EffectComposer } from './three/addons/postprocessing/EffectComposer';
+import { RenderPass } from './three/addons/postprocessing/RenderPass';
+import { ShaderPass } from './three/addons/postprocessing/ShaderPass';
 
-import { LuminosityShader } from 'three/addons/shaders/LuminosityShader';
-import { SobelOperatorShader } from 'three/addons/shaders/SobelOperatorShader';
+import { LuminosityShader } from './three/addons/shaders/LuminosityShader';
+import { SobelOperatorShader } from './three/addons/shaders/SobelOperatorShader';
 
 let effectSobel, composer;
 
