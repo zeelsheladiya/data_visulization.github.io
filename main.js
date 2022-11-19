@@ -223,9 +223,9 @@ ttfLoader.load('font/Roboto-Bold.ttf', (json) => {
 //const dogeTexture = new THREE.TextureLoader().load('images/doge.png');
 const zeelTexture = new THREE.TextureLoader().load('images/zeel.jpg');
 
-const anibalTexture = new THREE.TextureLoader().load('images/zeel.jpg');
+const anibalTexture = new THREE.TextureLoader().load('images/anibal.jpg');
 const aashishTexture = new THREE.TextureLoader().load('images/aashish.jpeg');
-const tonyTexture = new THREE.TextureLoader().load('images/zeel.jpg');
+const tonyTexture = new THREE.TextureLoader().load('images/tony.jpeg');
 const sidharthTexture = new THREE.TextureLoader().load('images/sishant.jpeg');
 const meenakshiTexture = new THREE.TextureLoader().load('images/meenakshi.jpeg');
 const mahommadTexture = new THREE.TextureLoader().load('images/mahommad.jpeg');

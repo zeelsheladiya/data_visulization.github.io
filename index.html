@@ -14,29 +14,37 @@
 
         <header>
         <h3>In-class Application Exercises 3</h3>
-        <p>🚀 Gruop F</p>
+        <p>🚀 Group F</p>
         </header>
 
 
         <blockquote>
-        <p>First Story :-  Average Milk consumption per age group</p>
+        <p>Story :-  A Disappearing Planet</p>
         </blockquote>
+
+        <section>
+        <h2>Audio:- </h2>
+        <audio controls>
+            <source src="audio/main.mp3" type="audio/mpeg">
+        </audio>
+        </section>
 
         <section class="left">
             <h2>📜 Manifesto</h2>
+
             <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            We have talked several times about why data storytelling is important, what are the impacts and feelings that a storyteller wants to raise. But we have not discussed how to achieve such a goal to make up stories using facts and figures. You might think that is coming from the creativity of each person, which might be true. But there are some rational steps that will help you on this.
             </p>
 
             <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-
-            <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Data sample we are talking about today is Disappearing planet, created by Anna Flagg and hosted on propublica.org. This can be considered a practical guideline for the book data storytelling by Cole Nussbaumer
             </p>
 
         </section>
+
+    <blockquote>
+    <p>This is a perfect example of minimalistic visualization.</p>
+    </blockquote>
 
     <section class="popo">
 
@@ -49,16 +57,18 @@
 
             const dataO = {
                 labels: [
-                    '0-2',
-                    '2-10',
-                    '10-15',
-                    '15-30',
-                    '30-50',
-                    '50-70'
+                    'AMPHIBIANS',
+                    'MAMMALS',
+                    'CONIFERS',
+                    'BIRDS',
+                    'SHARKS & RAYS',
+                    'REEF CORALS',
+                    'REPTILES',
+                    'CYCADS'
                 ],
                 datasets: [{
-                    label: '  Average Milk consumption ',
-                    data: [50, 40, 35, 25, 10, 30],
+                    label: '  Average Milk consumption % ',
+                    data: [41, 27, 34, 13, 37, 33, 21, 69],
                     backgroundColor: [
                         'rgb(255, 99, 132)',
                         'rgb(75, 192, 192)',
@@ -68,7 +78,7 @@
                         'rgb(173, 216, 230)'
                     ]
                 }],
-                color: 'white'
+                color: 'black'
             };
 
         new Chart(ctx, {
@@ -83,9 +93,9 @@
                             centerPointLabels: true,
                             font: {
                                 size: 18,
-                                color: "white"
+                                color: "black"
                             },
-                            color: "white"
+                            color: "black"
                         }
                     }
                 },
@@ -114,24 +124,27 @@
 
     </section>
 
-        <blockquote>
-        <p>Second Story: Average Fish consumption per month in Canada</p>
-        </blockquote>
-
         <section class="left">
             <h2>🌮 Story</h2>
 
-            <h3>McDonalds</h3>
             <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            When you go to the visualization, made as an interactive webpage, the first thing you notice is that it is very relaxed for your eyes. It is not crowded with any information that will lead to the reader's distraction. The first impression is not with extra cluttering and allows you to navigate by scrolling or clicking in each segment, mammals, reptiles, amphibians or birds.
             </p>
-            <h3>Burger King</h3>
+
             <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            But don’t jump around, we are just checking what it offers. It is like if somebody visits your home, people can clearly identify where to walk and sit down to start the interaction with you. You care that your house is organized and not over-saturated. You wouldn’t want anybody in your house to feel congested. You want your visitor to feel comfortable.
             </p>
-            <h3>Taco Bell</h3>
+
             <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            That’s how this visualization makes you feel in the first 5 seconds. Quoting Cole Nussbaumer from the book “storytelling with data” she says that (quote mark) “ if we have used our pre attentive attributes wisely, even if we get that initial 3-8 seconds, we have given our audience the gist of what we want to say”
+            </p>
+
+            <p>
+            While reading the first section, you feel engaged by the impact of non natural conditions also known as human impact on animal extinction. The text is very concrete and no further explanations or citations are required for the articles which the author uses as arguments.
+            </p>
+
+            <p>
+            When finishing scrolling the interactive tortoise leads you to the next  section. All the below sections are more detailed information about each species. All these 3 sections have the same kind of visualization. First of all, you can notice that basically there are 2 colors. Gray scale and red. This gray or white color for visualization is highlighter for least concerned species of animals. The red symbolizes danger.  As you can see when you select a family in the barchart in particular, the red highlighted word. However, the horizontal scroll bar color is black which does not strain your eyes and keep them relaxed.
             </p>
 
         </section>
@@ -144,11 +157,21 @@
     const ctx2 = document.getElementById('myChart2');
 
     const dataP = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        labels: [
+                    'AMPHIBIANS',
+                    'MAMMALS',
+                    'CONIFERS',
+                    'BIRDS',
+                    'SHARKS & RAYS',
+                    'REEF CORALS',
+                    'REPTILES',
+                    'CYCADS'
+        ],
         datasets: [{
             label: '  Average Fish consumption ',
-            data: [0.5, 0.75, 1, 1.25, 0.75, 0.5, 0.25],
+            data: [41, 27, 34, 13, 37, 33, 21, 69],
             backgroundColor: [
+                'black',
                 'black',
                 'black',
                 'black',
@@ -161,27 +184,41 @@
     };
 
     new Chart(ctx2, {
-        type: 'line',
+        type: 'bar',
         data: dataP,
         options: {
-    responsive: true,
-    plugins: {
-      title: {
-        display: true,
-          text: (ctx2) => 'Average Fish consumption per month in Canada',
-      }
-    }
+            indexAxis: 'y',
         }
     });
 
     </script>
 
+
     </section>
 
-        <blockquote>
-            <p>The End!</p>
-        </blockquote>
 
+    <blockquote>
+    <p>Therefore, using minimal color effects, interactive elements, and combination of speed and accuracy
+    while interpreting the data draws attention of our audience that can make our data storytelling more
+    effective.</p>
+    </blockquote>
+
+    <blockquote>
+    <p>Thank You</p>
+    </blockquote>
+
+    <section class="left">
+    <h2>References</h2>
+
+    <p>
+    <a>https://projects.propublica.org/extinctions/</a>
+    </p>
+
+    <p>
+    <a>https://www.iucnredlist.org/technical-documents/spatial-data</a>
+    </p>
+
+    </section>
 
     </main>
 
